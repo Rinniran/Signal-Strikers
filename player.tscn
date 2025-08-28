@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://btrijx7yily84"]
+
+[ext_resource type="Script" uid="uid://bt82u26cr4fqw" path="res://SRC/player.gd" id="1_4flbx"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_qbgws"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m1ymf"]
+diffuse_mode = 3
+specular_mode = 1
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_onrkg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4flbx"]
+albedo_color = Color(0, 1, 1, 1)
+
+[node name="Player" type="CharacterBody3D"]
+floor_max_angle = 1.11701
+script = ExtResource("1_4flbx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transparency = 0.24
+lod_bias = 0.001
+mesh = SubResource("CapsuleMesh_qbgws")
+surface_material_override/0 = SubResource("StandardMaterial3D_m1ymf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_onrkg")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0646515, 0.120155, -1.59839)
+size = Vector3(0.0905457, 0.0406952, 2.86963)
+material = SubResource("StandardMaterial3D_4flbx")
