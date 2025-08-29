@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0syaj5mec2yj"]
+
+[ext_resource type="PackedScene" uid="uid://cterkjrr0ic3t" path="res://CHARACTERMESH/RIAN/Rian.blend" id="1_ga5np"]
+
+[node name="Rian" instance=ExtResource("1_ga5np")]
+
+[node name="Skeleton3D" parent="rian_bones" index="0"]
+bones/0/rotation = Quaternion(0.707107, 0, -0.707107, 0)
+bones/1/rotation = Quaternion(0.707107, 0, -0.707107, 0)
+bones/2/rotation = Quaternion(-0.053068, -0.402243, -0.906142, 0.119547)
+bones/3/rotation = Quaternion(0.542582, -0.145702, -1.35093e-07, 0.82727)
+bones/4/rotation = Quaternion(0.263207, -0.0706799, -7.55011e-08, 0.962147)
+bones/6/rotation = Quaternion(0.707107, -3.09086e-08, 1.37679e-07, 0.707107)
+bones/7/rotation = Quaternion(-0.170844, 0.15896, -0.662377, 0.7119)
+bones/8/rotation = Quaternion(-0.170844, -0.15896, 0.662377, 0.7119)
+bones/9/rotation = Quaternion(-0.634063, -0.185748, -0.210074, 0.720646)
+bones/10/rotation = Quaternion(0.0502702, -0.250878, 0.96634, 0.0268408)
+bones/11/rotation = Quaternion(0.256097, -0.0380425, -0.00372762, 0.965895)
+bones/12/rotation = Quaternion(0.187411, 0.0595802, 0.0166244, 0.980332)
+bones/13/rotation = Quaternion(-0.634063, 0.185748, 0.210074, 0.720646)
+bones/14/rotation = Quaternion(-0.294201, -0.0238364, 0.719577, 0.628559)
+bones/15/rotation = Quaternion(-0.0225532, 0.195398, -0.908392, 0.368964)
+bones/15/scale = Vector3(1, 1, 1)
+bones/16/rotation = Quaternion(0.152018, 0.0898687, 0.63466, 0.752343)
+bones/16/scale = Vector3(1, 1, 1)
+bones/17/rotation = Quaternion(-0.130783, 0.991411, 0, 7.48495e-08)
+bones/18/rotation = Quaternion(2.00857e-08, -1.84277e-15, 0.266043, 0.963961)
+bones/19/rotation = Quaternion(-0.0492656, 0.134804, -0.580352, 0.801619)
+bones/19/scale = Vector3(1, 1, 1)
+
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = "idle"
+speed_scale = 0.5

@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=3 uid="uid://fbh2rx1m00sb"]
+
+[ext_resource type="Shader" uid="uid://besqejv1fase3" path="res://SHADERS/HUDBG.gdshader" id="1_ne771"]
+[ext_resource type="Texture2D" uid="uid://bphfsldr7bury" path="res://TEX/UI/PercentGauge.png" id="1_vow1y"]
+[ext_resource type="Texture2D" uid="uid://det150e7oepd0" path="res://TEX/UI/ICON/Zappy.png" id="2_ne771"]
+[ext_resource type="Texture2D" uid="uid://kus5wgqb4pnb" path="res://TEX/UI/ICON/Rian.png" id="3_xxqia"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xxqia"]
+shader = ExtResource("1_ne771")
+shader_parameter/brightness = 1.0
+shader_parameter/anchor = -0.5
+shader_parameter/speed_scale = 1.0
+shader_parameter/fov = 0.2
+shader_parameter/line_count = 1.0
+shader_parameter/background_color = Color(0, 0, 0.227451, 0.54902)
+shader_parameter/grid_color = Color(1, 0.5, 1, 1)
+shader_parameter/rainbow_intensity = 0.686
+
+[node name="Hud" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_xxqia")
+layout_mode = 0
+offset_left = 1.0
+offset_top = 294.0
+offset_right = 66.0
+offset_bottom = 358.0
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_xxqia")
+layout_mode = 0
+offset_left = 415.0
+offset_top = 2.0
+offset_right = 479.0
+offset_bottom = 66.0
+
+[node name="PercentGauge" type="Sprite2D" parent="."]
+z_index = 20
+position = Vector2(128, 322)
+texture = ExtResource("1_vow1y")
+
+[node name="PercentGauge2" type="Sprite2D" parent="."]
+z_index = 20
+position = Vector2(352, 34)
+texture = ExtResource("1_vow1y")
+
+[node name="Zappy" type="Sprite2D" parent="."]
+z_index = 20
+texture_filter = 1
+position = Vector2(34, 326)
+texture = ExtResource("2_ne771")
+
+[node name="Rian" type="Sprite2D" parent="."]
+z_index = 20
+texture_filter = 1
+position = Vector2(447, 34)
+texture = ExtResource("3_xxqia")
