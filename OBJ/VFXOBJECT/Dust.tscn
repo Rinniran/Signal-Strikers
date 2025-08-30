@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://b572jomb23bfj"]
+
+[ext_resource type="Texture2D" uid="uid://d2pr25br7mfvm" path="res://TEX/VFX/dust.png" id="1_sfsxd"]
+[ext_resource type="Script" uid="uid://dyaaxc4uu5slp" path="res://OBJ/VFXOBJECT/vfxobj.gd" id="2_q7o4u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kpbuy"]
+atlas = ExtResource("1_sfsxd")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ijj4"]
+atlas = ExtResource("1_sfsxd")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3nlef"]
+atlas = ExtResource("1_sfsxd")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xirnk"]
+atlas = ExtResource("1_sfsxd")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_84kn7"]
+atlas = ExtResource("1_sfsxd")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_33lod"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kpbuy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ijj4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3nlef")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xirnk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_84kn7")
+}],
+"loop": false,
+"name": &"default",
+"speed": 18.0
+}]
+
+[node name="Dust" type="AnimatedSprite3D"]
+billboard = 1
+alpha_cut = 3
+alpha_antialiasing_edge = 0.38
+texture_filter = 2
+sprite_frames = SubResource("SpriteFrames_33lod")
+autoplay = "default"
+script = ExtResource("2_q7o4u")

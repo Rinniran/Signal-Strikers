@@ -1,23 +1,30 @@
-[gd_scene load_steps=11 format=3 uid="uid://btrijx7yily84"]
+[gd_scene load_steps=13 format=3 uid="uid://btrijx7yily84"]
 
 [ext_resource type="Script" uid="uid://bt82u26cr4fqw" path="res://SRC/player.gd" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://bpvaf7cmryxgi" path="res://OBJ/PLAYER/BASE/raycast.gd" id="2_kqxe7"]
 [ext_resource type="Texture2D" uid="uid://du5yv20nswsgk" path="res://TEX/Shadow3.png" id="2_pl67a"]
-[ext_resource type="Script" path="res://SRC/StateMachine.gd" id="3_b8ctn"]
+[ext_resource type="Script" uid="uid://cadv6wc8ynnki" path="res://SRC/StateMachine.gd" id="3_b8ctn"]
 [ext_resource type="Script" uid="uid://la7akr5xg1uy" path="res://OBJ/PLAYER/BASE/STATES/Idle.gd" id="4_scnxn"]
 [ext_resource type="Script" uid="uid://qrc8kyiwrn75" path="res://OBJ/PLAYER/BASE/STATES/Move.gd" id="5_scnxn"]
 [ext_resource type="Script" uid="uid://dhg877jrpe6k5" path="res://OBJ/PLAYER/BASE/STATES/Jump.gd" id="6_ojm4c"]
 [ext_resource type="Script" uid="uid://gcyjt3fc7ems" path="res://OBJ/PLAYER/BASE/STATES/Fall.gd" id="6_pl67a"]
 [ext_resource type="PackedScene" uid="uid://d0syaj5mec2yj" path="res://CHARACTERMESH/RIAN/RianGame.tscn" id="6_ud01m"]
+[ext_resource type="Script" uid="uid://d4gl3mjsc81dv" path="res://OBJ/PLAYER/BASE/STATES/Fair.gd" id="9_qp7x1"]
+[ext_resource type="Script" uid="uid://cqk4bobobap1n" path="res://OBJ/PLAYER/BASE/STATES/Fallcnt.gd" id="9_uudop"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_onrkg"]
-height = 1.65208
+radius = 0.160248
+height = 1.21189
 
 [node name="Player" type="CharacterBody3D"]
+floor_constant_speed = true
 floor_max_angle = 1.11701
+floor_snap_length = 0.66
+platform_on_leave = 2
 script = ExtResource("1_4flbx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.181409, 0)
 shape = SubResource("CapsuleShape3D_onrkg")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
@@ -31,6 +38,9 @@ texture = ExtResource("2_pl67a")
 
 [node name="FRONTOBJ" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.48881)
+
+[node name="BACKOBJ" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.935703, 0.632528)
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("3_b8ctn")
@@ -48,39 +58,19 @@ script = ExtResource("6_ojm4c")
 [node name="Fall" type="Node" parent="StateMachine"]
 script = ExtResource("6_pl67a")
 
+[node name="Fallcnt" type="Node" parent="StateMachine"]
+script = ExtResource("9_uudop")
+
+[node name="Fair" type="Node" parent="StateMachine"]
+script = ExtResource("9_qp7x1")
+
 [node name="Mesh" parent="." instance=ExtResource("6_ud01m")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.0362552, -0.827294, 0.011574)
 
-[node name="Skeleton3D" parent="Mesh/rian_bones" index="0"]
-bones/0/position = Vector3(-1.66533e-16, 0.564409, -0.0385567)
-bones/0/rotation = Quaternion(0.626003, 0.328816, -0.626003, -0.328816)
-bones/1/rotation = Quaternion(0.707107, 5.26836e-09, -0.707107, 5.26836e-09)
-bones/2/position = Vector3(0.14879, 0.250672, 0.0931923)
-bones/2/rotation = Quaternion(0.262522, -0.588423, -0.600177, 0.47395)
-bones/3/rotation = Quaternion(0.267218, -0.0384573, 0.306225, 0.912876)
-bones/4/rotation = Quaternion(0.14289, -0.0254296, 0.0461395, 0.988335)
-bones/5/rotation = Quaternion(-0.221995, 1.31731e-07, -2.29356e-08, 0.975048)
-bones/6/rotation = Quaternion(0.396155, -4.01351e-08, 7.71341e-08, 0.918184)
-bones/7/rotation = Quaternion(-0.170844, 0.15896, -0.662377, 0.7119)
-bones/8/rotation = Quaternion(-0.170844, -0.15896, 0.662377, 0.7119)
-bones/9/rotation = Quaternion(-0.869866, -0.25441, -0.117936, 0.405831)
-bones/10/position = Vector3(-0.198393, 0.341491, -0.0987986)
-bones/10/rotation = Quaternion(-0.351383, -0.26927, 0.813694, 0.376731)
-bones/11/rotation = Quaternion(0.182179, 0.0277766, 0.111786, 0.976495)
-bones/12/rotation = Quaternion(0.127591, 7.05555e-09, 0.0603552, 0.989989)
-bones/13/rotation = Quaternion(-0.869866, 0.25441, 0.117936, 0.405831)
-bones/14/rotation = Quaternion(-0.125832, 0.048359, -0.0741798, 0.988092)
-bones/15/rotation = Quaternion(0.111854, -0.022259, -0.0947773, 0.988944)
-bones/15/scale = Vector3(1, 1, 1)
-bones/16/rotation = Quaternion(0.0749913, -0.0147938, 0.0360489, 0.996423)
-bones/16/scale = Vector3(1, 1, 1)
-bones/17/rotation = Quaternion(-0.83525, 0.496606, 0.229149, 0.0568456)
-bones/18/rotation = Quaternion(-0.00241954, 0.054628, 0.901794, 0.428692)
-bones/18/scale = Vector3(1, 1, 1)
-bones/19/rotation = Quaternion(2.67107e-08, -7.54875e-08, 0.115882, 0.993263)
-bones/19/scale = Vector3(1, 1, 1)
-
 [node name="AnimationPlayer" parent="Mesh" index="1"]
 speed_scale = 0.8
+
+[node name="Sound" type="AudioStreamPlayer3D" parent="."]
+volume_db = -4.615
 
 [editable path="Mesh"]
