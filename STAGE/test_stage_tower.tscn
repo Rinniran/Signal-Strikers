@@ -1,0 +1,669 @@
+[gd_scene load_steps=32 format=3 uid="uid://b21wkrj2rcdm4"]
+
+[ext_resource type="Script" uid="uid://dbetklcf7feoy" path="res://STAGE/STAGE.gd" id="1_7s04e"]
+[ext_resource type="PackedScene" uid="uid://fbh2rx1m00sb" path="res://OBJ/HUD.tscn" id="2_w0djc"]
+[ext_resource type="PackedScene" uid="uid://btrijx7yily84" path="res://OBJ/PLAYER/BASE/player.tscn" id="3_243sm"]
+[ext_resource type="PackedScene" uid="uid://bnxbd380sviwo" path="res://OBJ/GameCam.tscn" id="4_w11cs"]
+[ext_resource type="Shader" uid="uid://dia1ai5ec480i" path="res://SHADERS/Skybox.gdshader" id="5_i65jr"]
+[ext_resource type="Texture2D" uid="uid://8ojpqw2p06nj" path="res://TEX/TestSky.png" id="6_gsrcu"]
+[ext_resource type="PackedScene" uid="uid://psp4b3ibmovq" path="res://CHARACTERMESH/ZAPPY/Zappy.blend" id="7_nm036"]
+[ext_resource type="Script" uid="uid://cadv6wc8ynnki" path="res://SRC/StateMachine.gd" id="11_76mvi"]
+[ext_resource type="Script" uid="uid://nfeqlk5l00d1" path="res://STAGE/STATES/3.gd" id="12_1etck"]
+[ext_resource type="Script" uid="uid://ch6kh0b57x7xh" path="res://STAGE/STATES/2.gd" id="13_yiasg"]
+[ext_resource type="Script" uid="uid://cstqi7oj64wtm" path="res://STAGE/STATES/1.gd" id="14_m0nop"]
+[ext_resource type="Script" uid="uid://h3y4eye73wh" path="res://STAGE/STATES/GO.gd" id="15_gtmlt"]
+[ext_resource type="Texture2D" uid="uid://6e64hv0wx6wq" path="res://TEX/UI/STGCNTDWN1.png" id="16_7i16x"]
+[ext_resource type="Texture2D" uid="uid://ddkccwwhlapm7" path="res://TEX/UI/STGCNTDWN2.png" id="17_0fqnl"]
+[ext_resource type="Texture2D" uid="uid://cpo1maysmfrpx" path="res://TEX/UI/STGCNTDWN3.png" id="18_1klb1"]
+[ext_resource type="Texture2D" uid="uid://dydikyshhb7um" path="res://TEX/UI/STGCNTDWN4.png" id="19_7aejs"]
+[ext_resource type="AudioStream" uid="uid://ceev0nyql0lrq" path="res://AUDIO/SE/THREE REPLACE.mp3" id="20_80px4"]
+[ext_resource type="AudioStream" uid="uid://fku3phum5wj5" path="res://AUDIO/SE/TWO REPLACE.mp3" id="21_833x1"]
+[ext_resource type="AudioStream" uid="uid://0vyyu6jyec8" path="res://AUDIO/SE/ONE REPLACE.mp3" id="22_1dt8a"]
+[ext_resource type="PackedScene" uid="uid://dh0qi108aw273" path="res://STAGEMESH/Test01/hugetestmap_tower.tscn" id="22_km8sb"]
+[ext_resource type="AudioStream" uid="uid://d0n1qo4j1nnic" path="res://AUDIO/SE/GO REPLACE.mp3" id="23_err5u"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w0uf1"]
+
+[sub_resource type="Sky" id="Sky_vwyws"]
+sky_material = SubResource("ProceduralSkyMaterial_w0uf1")
+
+[sub_resource type="Environment" id="Environment_uww70"]
+background_mode = 1
+background_energy_multiplier = 3.53
+sky = SubResource("Sky_vwyws")
+ambient_light_source = 2
+ambient_light_color = Color(0.618155, 0.0505182, 0.926584, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lawq8"]
+render_priority = 0
+shader = ExtResource("5_i65jr")
+shader_parameter/sky_texture = ExtResource("6_gsrcu")
+shader_parameter/lock_aspect = true
+shader_parameter/aspect_ratio = 1.33333
+shader_parameter/fov = Vector2(200, 100)
+shader_parameter/tiling = Vector2i(1, 1)
+shader_parameter/offset = Vector2(-14, 0)
+
+[sub_resource type="Animation" id="Animation_mocpe"]
+resource_name = "1"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("STGCountdown/1:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23, 0.93),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(4, 4), Vector2(1, 1), Vector2(0.125, 0.125)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("STGCountdown/1:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(239, 184)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("STGCountdown/1:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.93),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sound:stream")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("22_1dt8a")]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sound")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_4h2rr"]
+resource_name = "2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("STGCountdown/2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.91),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("STGCountdown/2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.27, 0.91),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(4, 4), Vector2(1, 1), Vector2(0.26, 0.26)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("STGCountdown/2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(240, 184)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sound:stream")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("21_833x1")]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sound")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_5mhcm"]
+resource_name = "3"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("STGCountdown/3:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.966667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(4, 4), Vector2(1, 1), Vector2(0.22, 0.22)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("STGCountdown/3:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(243, 180)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("STGCountdown/3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hud:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("STGCountdown/2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("STGCountdown/1:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("STGCountdown/GO:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Sound")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Sound:stream")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("20_80px4")]
+}
+
+[sub_resource type="Animation" id="Animation_75ir3"]
+resource_name = "GO"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("STGCountdown/GO:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0270135, 0.0486242, 0.0648323, 0.0810404, 0.1, 0.127013, 0.148624, 0.164832, 0.18104, 0.201834, 0.228848, 0.250459, 0.266667, 0.282875, 0.301834, 0.328848, 0.350459, 0.366667, 0.382875),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(238, 187), Vector2(246, 182), Vector2(231, 187), Vector2(246, 190), Vector2(238, 179), Vector2(238, 187), Vector2(246, 182), Vector2(231, 187), Vector2(246, 190), Vector2(238, 179), Vector2(238, 187), Vector2(246, 182), Vector2(231, 187), Vector2(246, 190), Vector2(238, 179), Vector2(238, 187), Vector2(246, 182), Vector2(231, 187), Vector2(246, 190), Vector2(238, 179)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("STGCountdown/GO:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.971818),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hud:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.971818),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sound:stream")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("23_err5u")]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sound")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_c0bb1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("STGCountdown/3:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4, 4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("STGCountdown/3:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(243, 180)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("STGCountdown/3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("STGCountdown/2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("STGCountdown/2:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4, 4)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("STGCountdown/2:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(240, 184)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("STGCountdown/1:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4, 4)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("STGCountdown/1:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(239, 184)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("STGCountdown/1:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("STGCountdown/GO:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(238, 187)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("STGCountdown/GO:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Hud:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hl2j0"]
+_data = {
+&"1": SubResource("Animation_mocpe"),
+&"2": SubResource("Animation_4h2rr"),
+&"3": SubResource("Animation_5mhcm"),
+&"GO": SubResource("Animation_75ir3"),
+&"RESET": SubResource("Animation_c0bb1")
+}
+
+[node name="TestStage" type="Node3D"]
+script = ExtResource("1_7s04e")
+
+[node name="Hud" parent="." instance=ExtResource("2_w0djc")]
+visible = false
+z_index = 4096
+offset_left = 1.0
+offset_right = 1.0
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.0265259, 0.999648, 0, -0.999648, -0.0265259, 8.65599, 11.6, -17.6823)
+light_color = Color(1, 0, 0, 1)
+light_energy = 15.706
+light_indirect_energy = 3.748
+light_volumetric_fog_energy = 4.232
+light_bake_mode = 1
+distance_fade_enabled = true
+spot_range = 30.88
+spot_attenuation = 0.19
+spot_angle = 53.2
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.0265259, 0.999648, 0, -0.999648, -0.0265259, -11.2182, 41.1033, -10.272)
+light_color = Color(1, 0, 0, 1)
+light_energy = 15.706
+light_indirect_energy = 3.748
+light_volumetric_fog_energy = 4.232
+light_bake_mode = 1
+distance_fade_enabled = true
+spot_range = 46.5014
+spot_attenuation = 0.19
+spot_angle = 67.5
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.0265259, 0.999648, 0, -0.999648, -0.0265259, -0.193439, 6.60711, -1.82642)
+light_color = Color(0.13207, 0.521603, 0.696878, 1)
+light_energy = 12.474
+light_indirect_energy = 3.748
+light_volumetric_fog_energy = 4.232
+light_bake_mode = 1
+distance_fade_enabled = true
+spot_range = 30.88
+spot_attenuation = 0.19
+spot_angle = 20.0254
+
+[node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("3_243sm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00742, 0)
+camera = NodePath("../CamPivot")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_uww70")
+
+[node name="CamPivot" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_w11cs")]
+player = NodePath("../Player")
+
+[node name="Camera3D" parent="CamPivot" index="0"]
+current = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.999977, 0.00110398, 0.00671661, -0.00680673, 0.162186, 0.986737, 0, -0.98676, 0.162189, 0, 9.61491, 0)
+light_color = Color(0.124729, 0.161027, 0.100316, 1)
+light_energy = 0.142
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+directional_shadow_mode = 0
+sky_mode = 1
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.453648, 0.14454, 0.879381, -0.891181, 0.0735769, 0.447642, -1.49844e-11, -0.98676, 0.162189, 28.5107, 3.10826, 0)
+light_color = Color(0.688221, 0.804096, 0.311747, 1)
+light_energy = 1.048
+light_indirect_energy = 0.0
+light_negative = true
+directional_shadow_mode = 0
+sky_mode = 1
+
+[node name="DirectionalLight3D3" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.203676, -0.15879, -0.966076, 0.979038, 0.0330341, 0.200979, -2.00921e-10, -0.98676, 0.162189, -44.4398, 3.10826, 0)
+light_color = Color(0.0627451, 0.27451, 0.0784314, 1)
+light_energy = 1.286
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_bake_mode = 0
+directional_shadow_mode = 0
+sky_mode = 1
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 37.8719, 0)
+flip_faces = true
+radius = 797.216
+material = SubResource("ShaderMaterial_lawq8")
+
+[node name="Zappy" parent="." instance=ExtResource("7_nm036")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08072, 0.097598, -17.247)
+visible = false
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+volume_db = -8.509
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("11_76mvi")
+root_node_path = NodePath("..")
+
+[node name="3" type="Node" parent="StateMachine"]
+script = ExtResource("12_1etck")
+
+[node name="2" type="Node" parent="StateMachine"]
+script = ExtResource("13_yiasg")
+
+[node name="1" type="Node" parent="StateMachine"]
+script = ExtResource("14_m0nop")
+
+[node name="GO" type="Node" parent="StateMachine"]
+script = ExtResource("15_gtmlt")
+
+[node name="STGCountdown" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="3" type="Sprite2D" parent="STGCountdown"]
+position = Vector2(243, 180)
+scale = Vector2(4, 4)
+texture = ExtResource("16_7i16x")
+
+[node name="2" type="Sprite2D" parent="STGCountdown"]
+visible = false
+position = Vector2(240, 184)
+scale = Vector2(4, 4)
+texture = ExtResource("17_0fqnl")
+
+[node name="1" type="Sprite2D" parent="STGCountdown"]
+visible = false
+position = Vector2(239, 184)
+scale = Vector2(4, 4)
+texture = ExtResource("18_1klb1")
+
+[node name="GO" type="Sprite2D" parent="STGCountdown"]
+visible = false
+position = Vector2(238, 187)
+scale = Vector2(2, 2)
+texture = ExtResource("19_7aejs")
+
+[node name="ANIM" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_hl2j0")
+}
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_80px4")
+volume_db = -0.21
+bus = &"SFX"
+
+[node name="hugetestmap-tower" parent="." instance=ExtResource("22_km8sb")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -3.41354, -13.0838, -8.96337)
+
+[editable path="CamPivot"]

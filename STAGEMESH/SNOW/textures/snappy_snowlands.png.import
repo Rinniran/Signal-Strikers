@@ -2,20 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdhpiwvnt6yb2"
-path="res://.godot/imported/Cloudy_Sky-Night_03-512x512.png-5ae557f7b083eda1362c1b86d03201f3.ctex"
+uid="uid://nll3cxeajb3q"
+path.s3tc="res://.godot/imported/snappy_snowlands.png-d0b47af9f919a33acdb6c7d9ea0fc7de.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
+generator_parameters={}
 
 [deps]
 
-source_file="res://TEX/Cloudy_Sky-Night_03-512x512.png"
-dest_files=["res://.godot/imported/Cloudy_Sky-Night_03-512x512.png-5ae557f7b083eda1362c1b86d03201f3.ctex"]
+source_file="res://STAGEMESH/SNOW/textures/snappy_snowlands.png"
+dest_files=["res://.godot/imported/snappy_snowlands.png-d0b47af9f919a33acdb6c7d9ea0fc7de.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

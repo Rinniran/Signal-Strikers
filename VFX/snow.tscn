@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvuajsb1greb2"]
+
+[ext_resource type="PackedScene" uid="uid://y6kgosgc2ci4" path="res://STAGEMESH/snow.blend" id="1_dp5b7"]
+[ext_resource type="ArrayMesh" uid="uid://dx8dv7m0e5gl4" path="res://VFX/SnowMesh.tres" id="2_dp5b7"]
+
+[node name="snow2" instance=ExtResource("1_dp5b7")]
+
+[node name="snow" parent="." index="0"]
+mesh = ExtResource("2_dp5b7")

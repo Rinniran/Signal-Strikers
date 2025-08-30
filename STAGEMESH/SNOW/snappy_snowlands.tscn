@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=4 uid="uid://bdvprleypxb8u"]
+
+[ext_resource type="PackedScene" uid="uid://ca716qbknxngu" path="res://STAGEMESH/SNOW/Snappy_Snowlands.blend" id="1_w6pv2"]
+[ext_resource type="Texture2D" uid="uid://bbfoycntgbx2" path="res://STAGEMESH/SNOW/snappy_snowlands.png" id="2_m3lqr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cw8gb"]
+resource_name = "stage"
+cull_mode = 2
+shading_mode = 2
+albedo_texture = ExtResource("2_m3lqr")
+roughness = 0.74
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_etvb8"]
+_surfaces = [{
+"aabb": AABB(-28.8111, -9.54848, -33.2682, 57.6222, 12.6659, 66.5364),
+"format": 34896613377,
+"index_count": 90,
+"index_data": PackedByteArray("AAABAA8ADwABAAMADwADABAAAAAPABAAAQAOAAMADgAQAAMAAAAQAAIAAQALAA4ADQAAAAIAAQAAAAoACgAAAA0AAQAKAAsACwAMAA4ACwAKAAwAEAAOABEAEAARAAIAEQAOAAwADQACABEACgARAAwACgANABEABAASAAYABAAFABIACAAEAAYAEgAFAAcABwAIAAkACAAGAAkAEgAHABMAEwAGABIABwAJABMAEwAJAAYA"),
+"lods": [11.0778, PackedByteArray("AQAKAAsACwAKAAwACgANAAwACgAAAA0AAQAAAAoADQAAAAIAAAABAAIADQACAAwACwAMAA4AAgAOAAwAAQALAA4ADgACAAMAAQADAAIAAQAOAAMABAAFAAYABgAFAAcACAAEAAYABwAJAAYACAAGAAkABwAIAAkA"), 31.8496, PackedByteArray("AAABAAIAAQAAAAIAAQADAAIAAQACAAMABAAFAAYABgAFAAcACAAEAAYABwAJAAYACAAGAAkABwAIAAkA")],
+"name": "stage",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 20,
+"vertex_data": PackedByteArray("///9wP8/AAAAAP3A/z8AALrnAAAhTAAARBgAACFMAAB6kCS0/rUAAHqQJLScWQAAepD///61AACM1CS0nFkAAIzUJLT+tQAAjNT///61AAD/f/3A//8AAAAA/cD/vwAA/38AALrnAAD///3A/78AAEQYAADdswAA/3/9wAAAAAD/fwAARBgAALrnAADdswAAepD//9l8AACM1P//2XwAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_irp35"]
+resource_name = "Snappy_Snowlands_Circle"
+_surfaces = [{
+"aabb": AABB(-28.8111, -9.54848, -33.2682, 57.6222, 12.6659, 66.5364),
+"attribute_data": PackedByteArray("ZnmOiLcJjojQbmTnThRk57cJjohmeY6I0G5k504UZOeSl7vP6LO7z6uXXfThs7vPh5e7z6CXXfQ8pNPfeZhj1TykLdZ5mAnfi7Tm8GOUS/EDlM/SK7Rp0nQMBh4wP+d1dAycWO1xBh7tcZxYj0GOiGZ5joiPQWTntwmOiE4UZOdOFGTn0G5k504UZOePQWTnMD+7AI9BZOePQY6I0G5k504UZOe3CY6IZnmOiNBuZOePQWTnj0GOiI9BjoiPQWTnj0Fk59BuZOcDsF30+K9d9JuhqPA7oSvSO6Er0puhqPA="),
+"format": 34896613399,
+"index_count": 90,
+"index_data": PackedByteArray("GQAWACQAFgAZABcAFwAZABoAFgAXABgAAAAlAAIAAAAmACUAGwAnAB0AGwAcACcABAAoAAcABAApACgAKgAGACsAKgAFAAYAHgAsAB8AHgAtACwALgADAC8ALgABAAMAIAAwACIAMAAgADEAMQAgACMAMAAxACEACAAyAAoACAAJADIACwANADMACwAMAA0ADgAPABAADgARAA8ANAAUADUANAATABQANgASADcANgAVABIA"),
+"lods": [11.0778, PackedByteArray("FgAXABgAFgAZABcAFwAZABoAAAABAAIAAQADAAIAGwAcAB0AHgAbAB0AHAAGAB0AHAAFAAYAHgAdAB8ABAAeAB8ABAAfAAcAIAAhACIAIQAgACMACAAJAAoACwAMAA0ADgAPABAADgARAA8AEgATABQAFAAVABIA"), 31.8496, PackedByteArray("AAABAAIAAQADAAIABAAFAAYABAAGAAcACAAJAAoACwAMAA0ADgAPABAADgARAA8AEgATABQAFAAVABIA")],
+"material": SubResource("StandardMaterial3D_cw8gb"),
+"name": "stage",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 56,
+"vertex_data": PackedByteArray("///9wP8/bhQAAP3A/z9uFLrnAAAhTG4URBgAACFMbhQAAP3A/z+wwv///cD/P7DCuucAACFMsMJEGAAAIUywwnqQJLT+tf//epAktJxZ//96kP///rX//4zUJLScWf8/jNQktP61/z+M1P///rX/P4zUJLT+tdCAepD///610ICM1P///rXQgHqQJLT+tdCAjNQktJxZN9+M1P///rXS1HqQ///+tdLUepAktJxZN98AAP3A/z//v/9//cD///+/AAD9wP+//7////3A/z//v////cD/v/+//3/9wP//4Z3///3A/7/hnf9/AAC65+GdAAD9wP+/4Z1EGAAA3bPhnUQYAADds0zAuucAACFMusJEGAAAIUy6wv9/AAC65/+//3/9wAAA/7//fwAARBhuFP9//cAAAG4UuucAAN2z4Z1EGAAA3bOwwgAA/cD/v7DC///9wP+/sMK65wAA3bOwwv9/AAC65+Gd/3/9wP//4Z3/f/3AAABuFP9/AABEGG4U/38AAEQY/7+65wAA3bNMwHqQ///ZfP//jNT//9l8/z+M1P//2XzS1HqQ///ZfNLUepD//9l8N9+M1P//2Xw3384GaqBrIDB5zgZqoGsgMHmSU8jpyGltLMhpbSySU8jp/z//f/8//3//P/9//38AAP9/AAD/fwAA/////////////////////9rPjS+j1Ugro9VIK9rPjS////9/////f////3////9/////f8JHTkfCR05HwkdOR7E4wsexOMLHcgnjkqksqmlUFqisAAD/f////3/OBmqgzgZqoMJHTkeSU8jpklPI6chpbSzIaW0ssTjCx7E4wsdrIDB5ayAweQAA/3/kEo12/z//f/9/AACj1Ugro9VIK9rPjS/az40v")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_etvb8")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_m3lqr"]
+data = PackedVector3Array(28.8111, 0, -16.6349, -28.8111, 0, -16.6349, -0.0004, 0, -33.2682, -28.8111, 0, -16.6349, 28.8111, 0, -16.6349, -0.0004, 0, 33.2682, -0.0004, 0, 33.2682, 28.8111, 0, -16.6349, 28.8111, 0, 16.6338, -28.8111, 0, -16.6349, -0.0004, 0, 33.2682, -28.8111, 0, 16.6338, 28.8111, 0, -16.6349, -0.0004, -9.5485, -26.9613, 23.3483, -9.5485, -13.4814, 28.8111, 0, -16.6349, -0.0004, 0, -33.2682, -0.0004, -9.5485, -26.9613, -0.0004, 0, 33.2682, 23.3483, -9.5485, 13.4804, -0.0004, -9.5485, 26.9603, -0.0004, 0, 33.2682, 28.8111, 0, 16.6338, 23.3483, -9.5485, 13.4804, -28.8111, 0, -16.6349, -23.3492, -9.5485, 13.4804, -23.3492, -9.5485, -13.4814, -28.8111, 0, -16.6349, -28.8111, 0, 16.6338, -23.3492, -9.5485, 13.4804, 28.8111, 0, 16.6338, 23.3483, -9.5485, -13.4814, 23.3483, -9.5485, 13.4804, 28.8111, 0, 16.6338, 28.8111, 0, -16.6349, 23.3483, -9.5485, -13.4814, -28.8111, 0, 16.6338, -0.0004, -9.5485, 26.9603, -23.3492, -9.5485, 13.4804, -28.8111, 0, 16.6338, -0.0004, 0, 33.2682, -0.0004, -9.5485, 26.9603, -0.0004, 0, -33.2682, -23.3492, -9.5485, -13.4814, -0.0004, -9.5485, -26.9613, -0.0004, 0, -33.2682, -28.8111, 0, -16.6349, -23.3492, -9.5485, -13.4814, -23.3492, -9.5485, 13.4804, -0.0004, -9.5485, -26.9613, -23.3492, -9.5485, -13.4814, -0.0004, -9.5485, -26.9613, -23.3492, -9.5485, 13.4804, 23.3483, -9.5485, 13.4804, 23.3483, -9.5485, 13.4804, -23.3492, -9.5485, 13.4804, -0.0004, -9.5485, 26.9603, -0.0004, -9.5485, -26.9613, 23.3483, -9.5485, 13.4804, 23.3483, -9.5485, -13.4814, 3.7092, -0.6357, 14.0337, 3.7092, 3.1174, -0.8188, 3.7092, 3.1174, 14.0337, 3.7092, -0.6357, 14.0337, 3.7092, -0.6357, -9.9777, 3.7092, 3.1174, -0.8188, 19.0311, -0.6357, -9.9777, 19.0311, 3.1174, 14.0337, 19.0311, 3.1174, -0.8188, 19.0311, -0.6357, -9.9777, 19.0311, -0.6357, 14.0337, 19.0311, 3.1174, 14.0337, 19.0311, -0.6357, 14.0337, 3.7092, 3.1174, 14.0337, 19.0311, 3.1174, 14.0337, 19.0311, -0.6357, 14.0337, 3.7092, -0.6357, 14.0337, 3.7092, 3.1174, 14.0337, 19.0311, 3.1174, -0.8188, 3.7092, 3.1174, 14.0337, 3.7092, 3.1174, -0.8188, 19.0311, 3.1174, -0.8188, 19.0311, 3.1174, 14.0337, 3.7092, 3.1174, 14.0337, 3.7092, 3.1174, -0.8188, 19.0311, -0.6357, -9.9777, 19.0311, 3.1174, -0.8188, 3.7092, 3.1174, -0.8188, 3.7092, -0.6357, -9.9777, 19.0311, -0.6357, -9.9777)
+
+[node name="Snappy_Snowlands" instance=ExtResource("1_w6pv2")]
+
+[node name="Circle" parent="." index="0"]
+mesh = SubResource("ArrayMesh_irp35")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Circle" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Circle/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_m3lqr")

@@ -14,6 +14,12 @@ func _process(delta: float) -> void:
 	position.y = player.position.y + 1
 	if target != null:
 		_look_at_target_interpolated(.1)
+	else:
+		if Input.is_action_pressed("camleft"):
+			rotation.y += .1
+		if Input.is_action_pressed("camright"):
+			rotation.y -= .1
+		
 
 
 func _look_at_target_interpolated(weight:float) -> void:

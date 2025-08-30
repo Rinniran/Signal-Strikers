@@ -1,8 +1,11 @@
 extends CharacterBody3D
+class_name Character
 
 
-const SPEED = 13.0
-const JUMP_VELOCITY = 6.5
+@export var SPEED = 13.0
+@export var REGSPEED = 13.0
+@export var DASHSPEED = 24.0
+const JUMP_VELOCITY = 16
 @export var rotation_speed : float = TAU * 1.8
 var _theta:float 
 
@@ -10,12 +13,23 @@ var facing_direction: Vector3 = Vector3.FORWARD
 var facing_direction_3d: int = 1
 
 var GRAV_ENABLED = true
-var MOVE_ENABLED = true
+var MOVE_ENABLED = false
+
+var CAN_INPUT = false
 
 @export var camera:Marker3D
 
 @onready var mesh = $Mesh
 @onready var anim = $Mesh/AnimationPlayer
+@onready var fr = $FRONTOBJ
+@onready var bk = $BACKOBJ
+@onready var soundpl = $Sound
+
+
+@onready var SNDATK1 = preload("res://AUDIO/SE/C_Atk1.wav")
+@onready var SNDJMP = preload("res://AUDIO/SE/C_Jmp.wav")
+@onready var SNDLNDLT = preload("res://AUDIO/SE/C_LndLight.wav")
+
 
 func _ready() -> void:
 	$StateMachine.initialize()
@@ -48,9 +62,15 @@ func get_movement_vector() -> Vector2:
 	return get_input_vector().rotated(-camera.rotation.y).normalized()
 
 func _physics_process(delta: float) -> void:
-	$StateMachine.advance()
+	
+	if get_parent().match_started == false || get_parent().match_ended == true:
+		CAN_INPUT = false
+	else: CAN_INPUT = true
+	
+	if CAN_INPUT:
+		$StateMachine.advance()
 	# Add the gravity.
-	if not is_on_floor():
+	if GRAV_ENABLED && not is_on_floor():
 		velocity += get_gravity() * delta
 
 	# Handle jump.
@@ -60,8 +80,6 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_released("ui_accept") and velocity.y > 0:
 		velocity.y = 0
 		
-	if Input.is_action_just_pressed("attack"):
-		GameMechanics.create_hitbox(Vector3($FRONTOBJ.position.x,$FRONTOBJ.position.y,$FRONTOBJ.position.z + 2), 12, 2, 2, 3, $FRONTOBJ)
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -77,13 +95,14 @@ func _physics_process(delta: float) -> void:
 		
 		#rotate(Vector3.FORWARD, _theta)
 		#look_at(position + direction)
-		velocity.x = acceleration_vector.x
-		velocity.z = acceleration_vector.y
+		if MOVE_ENABLED:
+			velocity.x = acceleration_vector.x
+			velocity.z = acceleration_vector.y
 
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	
 	#rotation.y = velocity.x + velocity.z
-
-	move_and_slide()
+	if MOVE_ENABLED:
+		move_and_slide()
